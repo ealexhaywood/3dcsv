@@ -1,0 +1,6 @@
+name,age,tags,skills,projects
+Alice,28,developer|open-source|typescript,react|node|bun,3dcsv|other-project
+Bob,35,designer|ui|ux,figma|sketch|css,portfolio|client-work
+Charlie,42,founder|entrepreneur|startup,business|strategy|sales,startup-1|startup-2|startup-3
+Diana,29,developer|backend|database,postgresql|redis|go,api-service|data-pipeline
+Eve,31,fullstack|devops|cloud,react|node|docker|kubernetes,web-app|infrastructure

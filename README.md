@@ -93,6 +93,18 @@ const regularCsv = stringify(flat); // no pipes
 
 Optional: `parse(csv).flatten({ columns: ["tags"] })` to expand only specific columns.
 
+### Visualize (CLI)
+
+Run a local server and open a React table view in the browser:
+
+```bash
+bunx 3dcsv visualize
+# or with a file (relative to cwd):
+bunx 3dcsv visualize example.csv
+```
+
+Opens `http://localhost:3847` (or `PORT` env). List-valued cells render as badges. The UI is built with React and bundled with Bun; run `bun run dev:ui` to watch for changes and `bun run dev:server` to run the server.
+
 ### No schema, no generic
 
 If you do nothing, you get `{ headers: string[]; rows: unknown[] }`. Typed rows are opt-in via schema or generic.
@@ -102,6 +114,7 @@ If you do nothing, you get `{ headers: string[]; rows: unknown[] }`. Typed rows 
 - **`parse(input, options?)`** — Parse 3D CSV. Options: `dimensionDelimiters`, `header`, `columns`, `asObjects`, `schema`, `validate`.
 - **`parse(csv).flatten(options?)`** — Expand array cells into one row per element (Cartesian product when multiple columns); returns Parsed3DCSV with all scalar rows. Options: `columns?: string[]`.
 - **`stringify(data, options?)`** — Stringify to 3D CSV. Accepts `{ headers, rows }` or array of row objects (headers inferred).
+- **`bunx 3dcsv visualize [file.csv]`** — Start a local server and open a table UI; optional file path (relative to cwd).
 
 _It’s just CSV with pipes in the cells. Sometimes that’s all you need. Sometimes._
 

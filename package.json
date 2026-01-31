@@ -6,6 +6,9 @@
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "bin": {
+    "3dcsv": "./dist/cli.js"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -17,10 +20,14 @@
     "dist"
   ],
   "scripts": {
-    "build": "bun run build:tsc && bun run build:bun",
+    "build": "bun run build:tsc && bun run build:bun && bun run build:visualize",
     "build:tsc": "bunx tsc --noEmit && bunx tsc -p tsconfig.build.json",
-    "build:bun": "bun build ./src/index.ts --target=node --format=esm --minify --outfile=dist/index.mjs && bun build ./src/index.ts --target=node --format=cjs --minify --outfile=dist/index.cjs",
+    "build:bun": "bun build ./src/index.ts --target=node --format=esm --minify --outfile=dist/index.mjs && bun build ./src/index.ts --target=node --format=cjs --minify --outfile=dist/index.cjs && bun build ./src/cli.ts --target=node --format=esm --outfile=dist/cli.js",
+    "build:visualize": "mkdir -p dist/visualize && bun build ./visualize-app/src/main.tsx --target=browser --outdir=dist/visualize && cp visualize-app/index.html dist/visualize/",
     "test": "bun test",
+    "dev:ui": "bun build ./visualize-app/src/main.tsx --target=browser --outdir=dist/visualize --watch",
+    "dev:server": "bun dist/cli.js visualize example.csv",
+    "dev": "bun run dev:ui & bun run dev:server",
     "changeset": "changeset",
     "version": "changeset version",
     "release": "bun run build && npm publish",
@@ -28,7 +35,11 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
     "bun-types": "latest",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
     "typescript": "^5.3.0"
   },
   "peerDependencies": {

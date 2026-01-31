@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+#root {
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 1.25rem;
+  margin: 0 0 1rem 0;
+}
+
+.empty {
+  color: #888;
+  margin: 2rem 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #444;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+th {
+  background: #2a2a2a;
+}
+
+tr:nth-child(even) {
+  background: #222;
+}
+
+.cell-array {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.badge {
+  background: #444;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+.error {
+  color: #e57373;
+}
