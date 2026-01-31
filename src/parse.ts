@@ -5,7 +5,9 @@
  */
 
 import { parseCSVRows } from "./csv-base.js";
+import { createFlatResult, flattenRows } from "./flatten.js";
 import type { Cell, ParseOptions, Parsed3DCSV, RowObject, RowArray } from "./types.js";
+import type { FlattenOptions } from "./types.js";
 
 const DEFAULT_DIMENSION_DELIMITER = "|";
 
@@ -92,6 +94,10 @@ function createParsedResult<T>(
     toObjects(): RowObject[] {
       if (asObjects) return rows as unknown as RowObject[];
       return objectRows;
+    },
+    flatten(options?: FlattenOptions): Parsed3DCSV<RowObject> {
+      const flatRows = flattenRows(headers, objectRows, options);
+      return createFlatResult(headers, flatRows);
     },
   };
 }

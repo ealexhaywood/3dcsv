@@ -7,7 +7,7 @@ import { parse3DCSV } from "./parse.js";
 import { stringify3DCSV } from "./stringify.js";
 import type { ParseOptions, Parsed3DCSV, StringifyOptions } from "./types.js";
 
-export type { Cell, Parsed3DCSV, ParseOptions, Row, RowArray, RowObject, StringifyOptions } from "./types.js";
+export type { Cell, FlattenOptions, Parsed3DCSV, ParseOptions, Row, RowArray, RowObject, StringifyOptions } from "./types.js";
 
 /** Schema-like: has parse and optional _output for type inference (e.g. Zod). */
 type SchemaWithOutput = { parse: (v: unknown) => unknown; _output?: unknown };

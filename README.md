@@ -2,7 +2,7 @@
 
 **Pipe-separated comma-separated values** — represent complex, multi-valued data in a single 2D CSV. One table, one header row, list-valued cells via a dimension delimiter (default `|`).
 
-*Yes, it’s still a 2D grid. The “3D” is aspirational.*
+_Yes, it’s still a 2D grid. The “3D” is aspirational._
 
 ## Install
 
@@ -79,6 +79,20 @@ result.toRows(); // always: Cell[][] (array of arrays)
 result.toObjects(); // always: Record<string, Cell>[]
 ```
 
+### Flatten back to regular CSV
+
+Come back down to earth and expand list-valued cells into one row per element (join-table style). Then stringify to get plain CSV with no pipes.
+
+```ts
+const csv = `name,tags
+Alice,"js|ts|rust"`;
+const flat = parse(csv).flatten();
+// flat.rows: [{ name: "Alice", tags: "js" }, { name: "Alice", tags: "ts" }, ...]
+const regularCsv = stringify(flat); // no pipes
+```
+
+Optional: `parse(csv).flatten({ columns: ["tags"] })` to expand only specific columns.
+
 ### No schema, no generic
 
 If you do nothing, you get `{ headers: string[]; rows: unknown[] }`. Typed rows are opt-in via schema or generic.
@@ -86,9 +100,10 @@ If you do nothing, you get `{ headers: string[]; rows: unknown[] }`. Typed rows 
 ## API
 
 - **`parse(input, options?)`** — Parse 3D CSV. Options: `dimensionDelimiters`, `header`, `columns`, `asObjects`, `schema`, `validate`.
+- **`parse(csv).flatten(options?)`** — Expand array cells into one row per element (Cartesian product when multiple columns); returns Parsed3DCSV with all scalar rows. Options: `columns?: string[]`.
 - **`stringify(data, options?)`** — Stringify to 3D CSV. Accepts `{ headers, rows }` or array of row objects (headers inferred).
 
-*It’s just CSV with pipes in the cells. Sometimes that’s all you need. Sometimes.*
+_It’s just CSV with pipes in the cells. Sometimes that’s all you need. Sometimes._
 
 ## Format
 
@@ -106,4 +121,4 @@ MIT
 
 ---
 
-*3D CSV: because one dimension was never enough. We’re not saying it’s a good idea — we’re just saying it works.*
+_3D CSV: because one dimension was never enough. We’re not saying it’s a good idea — we’re just saying it works._

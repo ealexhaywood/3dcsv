@@ -22,6 +22,14 @@ export interface Parsed3DCSV<T = unknown> {
   rows: T[];
   toRows(): Cell[][];
   toObjects(): RowObject[];
+  /** Expand array-valued cells into one row per element (join-table style). Returns regular CSV shape (all scalars). */
+  flatten(options?: FlattenOptions): Parsed3DCSV<RowObject>;
+}
+
+/** Options for flattening 3D CSV to regular CSV. */
+export interface FlattenOptions {
+  /** Columns to expand (default: all columns that are arrays, in header order). */
+  columns?: string[];
 }
 
 /** Options for parsing 3D CSV. */
