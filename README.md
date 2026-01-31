@@ -7,15 +7,15 @@
 ## Install
 
 ```bash
-bun add 3d-csv
+bun add 3dcsv
 # or
-npm install 3d-csv
+npm install 3dcsv
 ```
 
 For typed rows with runtime validation (recommended):
 
 ```bash
-bun add 3d-csv zod
+bun add 3dcsv zod
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ bun add 3d-csv zod
 ### Parse and stringify
 
 ```ts
-import { parse, stringify } from "3d-csv";
+import { parse, stringify } from "3dcsv";
 
 const csv = `name,age,tags
 Alice,30,"js|ts|rust"
@@ -45,7 +45,7 @@ const back = stringify({ headers, rows });
 Pass a Zod schema; return type is inferred. No type assertions.
 
 ```ts
-import { parse } from "3d-csv";
+import { parse } from "3dcsv";
 import { z } from "zod";
 
 const personSchema = z.object({
