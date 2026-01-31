@@ -2,6 +2,8 @@
 
 **Pipe-separated comma-separated values** — represent complex, multi-valued data in a single 2D CSV. One table, one header row, list-valued cells via a dimension delimiter (default `|`).
 
+*Yes, it’s still a 2D grid. The “3D” is aspirational.*
+
 ## Install
 
 ```bash
@@ -72,8 +74,8 @@ const result = parse<Person>(csv);
 ```ts
 const result = parse(csv);
 
-result.rows;       // default: array of row objects
-result.toRows();   // always: Cell[][] (array of arrays)
+result.rows; // default: array of row objects
+result.toRows(); // always: Cell[][] (array of arrays)
 result.toObjects(); // always: Record<string, Cell>[]
 ```
 
@@ -86,11 +88,17 @@ If you do nothing, you get `{ headers: string[]; rows: unknown[] }`. Typed rows 
 - **`parse(input, options?)`** — Parse 3D CSV. Options: `dimensionDelimiters`, `header`, `columns`, `asObjects`, `schema`, `validate`.
 - **`stringify(data, options?)`** — Stringify to 3D CSV. Accepts `{ headers, rows }` or array of row objects (headers inferred).
 
+*It’s just CSV with pipes in the cells. Sometimes that’s all you need. Sometimes.*
+
 ## Format
 
 - Rows and columns as usual; cells can contain a **dimension delimiter** (default `|`).
 - A cell like `"a|b|c"` is one cell whose value is the list `["a", "b", "c"]`.
 - Quoting and escaping follow standard CSV (e.g. `""` inside quoted fields).
+
+## Contributing
+
+Changesets for versioning: run `bun run changeset` when you change the package. Merge the “Version Packages” PR to publish. See [.changeset/README.md](.changeset/README.md).
 
 ## License
 
@@ -98,4 +106,4 @@ MIT
 
 ---
 
-*3D CSV: because one dimension was never enough.*
+*3D CSV: because one dimension was never enough. We’re not saying it’s a good idea — we’re just saying it works.*

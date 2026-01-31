@@ -19,9 +19,13 @@
     "build:tsc": "bunx tsc --noEmit && bunx tsc -p tsconfig.build.json",
     "build:bun": "bun build ./src/index.ts --target=node --format=esm --minify --outfile=dist/index.mjs && bun build ./src/index.ts --target=node --format=cjs --minify --outfile=dist/index.cjs",
     "test": "bun test",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "bun run build && npm publish",
     "prepublishOnly": "bun run build"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.0",
     "bun-types": "latest",
     "typescript": "^5.3.0"
   },
