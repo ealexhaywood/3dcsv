@@ -1,6 +1,6 @@
 {
   "name": "3dcsv",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Pipe-separated comma-separated values — infinitely dimensional data in a 2D CSV.",
   "type": "module",
   "main": "dist/index.cjs",
