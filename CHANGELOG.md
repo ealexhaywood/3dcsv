@@ -1,5 +1,11 @@
 # 3d-csv
 
+## 0.3.0
+
+### Minor Changes
+
+- e419f05: Add visualizer
+
 ## 0.2.0
 
 ### Minor Changes
