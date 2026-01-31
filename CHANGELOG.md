@@ -1,5 +1,11 @@
 # 3d-csv
 
+## 0.2.0
+
+### Minor Changes
+
+- 4ad15de: Flattening 3dcsv to regular csv
+
 ## 0.1.1
 
 ### Patch Changes
